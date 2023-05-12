@@ -1,5 +1,7 @@
 import json
 import os
+import yaml
+
 from datetime import datetime, timedelta
 
 from dotenv import load_dotenv
@@ -9,8 +11,8 @@ from pyrogram import Client
 async def fast_search(key_words: list[str] = None):
     start_time = datetime.now()
 
-    with open('settings.json', 'r') as f:
-        settings = json.load(f)
+    with open('settings.yaml', 'r') as f:
+        settings = yaml.safe_load(f)
 
     chat_id_to_forward = settings.get('chat_id_to_forward')
 
